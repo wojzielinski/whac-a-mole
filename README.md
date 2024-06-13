@@ -1,12 +1,8 @@
 # Whac-a-Rat
 
-***
-
 *Gra dla prawdziwych szczurołapów*
 
 ## Opis gry
-
-***
 
 ### Gra w pigułce
 
@@ -14,10 +10,12 @@ Gra *Whac-a-Rat* jest wzorowana na popularnej grze typu arcade *Whac-a-Mole* (pa
 
 ### Mechanika
 
-Gra składa się z "planszy", na której w wyznaczonych miejscach pojawiają się szczury - cel gracza. Gracz próbuje uderzyć szczura bronią w czasie, kiedy jest na powierzchni. Jeżeli zdąży przed ucieczką szczura - dostaje punkty.
+Gra składa się z "planszy", na której w wyznaczonych miejscach pojawiają się szczury - cel gracza. Gracz próbuje uderzyć szczura bronią w czasie, kiedy jest na powierzchni. Jeżeli zdąży przed ucieczką szczura - dostaje punkty. Szczury pojawiają się i znikają w losowych odstępach czasu.
 
 Dodatkowym utrudnieniem jest różnorodność szczurów i broni. Każdy z kilku rodzajów szczura ma swoje mocne i słabe strony - w zależności od wybranej broni szczurowi zadaje się mniej lub więcej obrażeń.
 Chybione uderzenie zabiera staminę - brak staminy oznacza przegraną. Niektóre szczury są agresywne i mogą losowo zaatakować gracza - gdy życie gracza spadnie do zera, gracz przegrywa.
+
+Gra będzie wyposażona w menu oraz tabelę najlepszych wyników. 
 
 ### Fabuła
 
