@@ -1,11 +1,16 @@
 #ifndef WHAC_A_RAT_WEAPON_H
 #define WHAC_A_RAT_WEAPON_H
 #include "Rat.h"
+#include "Randomizer.h"
 
 class Weapon {
-    int damage;
+    const int baseDamage;
+protected:
+    const Randomizer & RAND;
 public:
-    int get_damage(Rat * rat);
+    Weapon(int baseDmg, const Randomizer & rand);
+    virtual float get_damage(Rat * rat)=0;
+    int get_baseDmg();
 };
 
 

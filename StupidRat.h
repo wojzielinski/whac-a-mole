@@ -1,13 +1,11 @@
-//
-// Created by harcs on 20.06.2024.
-//
-
 #ifndef WHAC_A_RAT_STUPIDRAT_H
 #define WHAC_A_RAT_STUPIDRAT_H
+#include "Rat.h"
 
-
-class StupidRat {
-
+class StupidRat : public Rat{
+public:
+    StupidRat(RatType t, int h, int s, Randomizer & rand);
+    void attack(Player &player) override;
 };
 
 

@@ -1,13 +1,11 @@
-//
-// Created by harcs on 20.06.2024.
-//
-
 #ifndef WHAC_A_RAT_BASEBALLBAT_H
 #define WHAC_A_RAT_BASEBALLBAT_H
+#include "Weapon.h"
 
-
-class BaseballBat {
-
+class BaseballBat : public Weapon{
+public:
+    BaseballBat(int baseDmg, const Randomizer & rand);
+    float get_damage(Rat *rat) override;
 };
 
 

@@ -1,9 +1,11 @@
 #ifndef WHAC_A_RAT_NERDRAT_H
 #define WHAC_A_RAT_NERDRAT_H
+#include "Rat.h"
 
-
-class NerdRat {
-
+class NerdRat : public Rat{
+public:
+    NerdRat(RatType t, int h, int s, Randomizer & rand);
+    void attack(Player &player) override;
 };
 
 
