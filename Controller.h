@@ -20,6 +20,7 @@ public:
     Controller(Randomizer & rand);
     void duel(Rat & rat, Player & player, Weapon & weapon);
     Rat * find_rat(int pos);
+    void restart();
     void shuff_rats();
 };
 

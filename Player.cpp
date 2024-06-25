@@ -18,6 +18,11 @@ void Player::take_damage(float dmg) {
         hp -= dmg;
 }
 
+void Player::take_stamina() {
+    if(stamina > 0)
+        stamina-=10;
+}
+
 void Player::heal() {
     hp = 100.0;
 }

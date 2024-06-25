@@ -71,3 +71,10 @@ Rat * Controller::find_rat(int pos) {
 void Controller::shuff_rats() {
     std::shuffle(ratsVec.begin(), ratsVec.end(), RAND.get_eng());
 }
+
+void Controller::restart() {
+    ratsVec.clear();
+    for (int i = 0; i < 6; ++i) {
+        push_rat();
+    }
+}

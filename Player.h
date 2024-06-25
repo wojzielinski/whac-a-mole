@@ -9,6 +9,7 @@ public:
     float get_hp() const;
     float get_stamina() const;
     void take_damage(float dmg);
+    void take_stamina();
     void heal();
 };
 

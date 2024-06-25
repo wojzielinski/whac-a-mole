@@ -35,3 +35,20 @@ void Rat::debug_info() {
     std::cout << "Type: " << type << std::endl;
     std::cout << "Health: " << health << std::endl;
 }
+
+bool Rat::time_to_hide() {
+    if (timer.getElapsedTime().asMilliseconds() <= (timeToHide+10) &&
+        timer.getElapsedTime().asMilliseconds() >= (timeToHide-10))
+        return true;
+    return false;
+}
+
+void Rat::show() {
+    toggle_isAttackable();
+    timer.restart();
+}
+
+void Rat::hide() {
+    if(!isAttackable) return;
+    if(time_to_hide()) toggle_isAttackable();
+}

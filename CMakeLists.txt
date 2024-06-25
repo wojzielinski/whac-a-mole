@@ -44,6 +44,8 @@ add_executable(whac_a_rat
         Controller.cpp
         Controller.h
         Manager.cpp
-        Manager.h)
+        Manager.h
+        View.cpp
+        View.h)
 
 target_link_libraries(whac_a_rat sfml-graphics)
