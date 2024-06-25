@@ -15,7 +15,7 @@ IF (WIN32)
 ENDIF()
 
 # SFML SETUP
-find_package(SFML 2 COMPONENTS graphics REQUIRED)
+find_package(SFML 2 COMPONENTS graphics audio REQUIRED)
 
 add_executable(whac_a_rat
         Weapon.cpp
@@ -46,6 +46,10 @@ add_executable(whac_a_rat
         Manager.cpp
         Manager.h
         View.cpp
-        View.h)
+        View.h
+        Leaderboard.cpp
+        Leaderboard.h
+        Palette.cpp
+        Palette.h)
 
-target_link_libraries(whac_a_rat sfml-graphics)
+target_link_libraries(whac_a_rat sfml-graphics sfml-audio)

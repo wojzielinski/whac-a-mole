@@ -1,16 +1,12 @@
 #include "Controller.h"
-#include "StupidRat.h"
-#include "NerdRat.h"
-#include "MilitaryRat.h"
-#include "BreslauRat.h"
-#include "BaseballBat.h"
-#include "Shoe.h"
-#include "Gun.h"
 #include "Player.h"
 #include "Randomizer.h"
 #include "Manager.h"
+#include "Leaderboard.h"
+#include "View.h"
+#include "Palette.h"
 
-#include <iostream>
+#include <SFML/Graphics.hpp>
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Whac-a-rat!",
@@ -24,5 +20,9 @@ int main() {
     Randomizer rand;
     Player player(100, 100);
     Controller ctrl(rand);
-    Manager mngr(ctrl,rand,player,window);
+    Leaderboard lb("results.txt");
+    View view(ctrl, window, lb);
+    Manager mngr(ctrl,rand,player,window,view,lb);
+
+    mngr.play();
 }

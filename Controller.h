@@ -13,6 +13,7 @@ class Controller {
     Randomizer & RAND;
     std::vector<Rat *> ratsVec;
     bool rat_attack(Rat & rat);
+    int score;
 
 public:
     void push_rat();
@@ -21,7 +22,9 @@ public:
     void duel(Rat & rat, Player & player, Weapon & weapon);
     Rat * find_rat(int pos);
     void restart();
+    int get_score() const;
     void shuff_rats();
+    void hide_rats();
 };
 
 

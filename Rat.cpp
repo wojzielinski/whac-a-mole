@@ -44,6 +44,7 @@ bool Rat::time_to_hide() {
 }
 
 void Rat::show() {
+    if(isAttackable) return;
     toggle_isAttackable();
     timer.restart();
 }

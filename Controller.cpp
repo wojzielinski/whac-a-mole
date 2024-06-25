@@ -28,7 +28,6 @@ void Controller::duel(Rat &rat, Player &player, Weapon &weapon) {
         std::vector<Rat *>::iterator it = std::find_if(ratsVec.begin(), ratsVec.end(), [&](Rat *r) -> bool {
             return r == &rat;
         });
-        if (it == ratsVec.end()) throw std::exception();
         kill_rat(it);
         push_rat();
         std::shuffle(ratsVec.begin(), ratsVec.end(), RAND.get_eng());
@@ -60,6 +59,17 @@ void Controller::push_rat() {
 }
 
 void Controller::kill_rat(std::vector<Rat *>::iterator it) {
+    RatType t = (*it)->get_type();
+    switch (t) {
+        case STUPID:
+            score += 100; break;
+        case NERD:
+            score += 150; break;
+        case MILITARY:
+            score += 250; break;
+        case BRESLAU:
+            score += 500; break;
+    }
     delete *it;
     ratsVec.erase(it);
 }
@@ -76,5 +86,16 @@ void Controller::restart() {
     ratsVec.clear();
     for (int i = 0; i < 6; ++i) {
         push_rat();
+    }
+    score = 0;
+}
+
+int Controller::get_score() const {
+    return score;
+}
+
+void Controller::hide_rats() {
+    for(Rat * r : ratsVec){
+        r->hide();
     }
 }
