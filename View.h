@@ -4,13 +4,14 @@
 #include "Controller.h"
 #include "Leaderboard.h"
 #include "Palette.h"
+#include "Label.h"
 
 class View {
     sf::RenderWindow & WIN;
     Controller & CTRL;
     Leaderboard & LB;
-    Palette p;
-
+    Palette palette;
+    Label label;
 public:
     View(Controller & ctrl, sf::RenderWindow & win, Leaderboard & lb);
     void draw_menu();

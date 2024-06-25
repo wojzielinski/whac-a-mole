@@ -17,6 +17,8 @@ ENDIF()
 # SFML SETUP
 find_package(SFML 2 COMPONENTS graphics audio REQUIRED)
 
+configure_file(assets/fonts/VT323-Regular.ttf ${CMAKE_CURRENT_BINARY_DIR}/assets/fonts/VT323-Regular.ttf COPYONLY)
+
 add_executable(whac_a_rat
         Weapon.cpp
         Weapon.h
@@ -50,6 +52,8 @@ add_executable(whac_a_rat
         Leaderboard.cpp
         Leaderboard.h
         Palette.cpp
-        Palette.h)
+        Palette.h
+        Label.cpp
+        Label.h)
 
 target_link_libraries(whac_a_rat sfml-graphics sfml-audio)
