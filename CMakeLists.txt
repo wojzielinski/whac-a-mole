@@ -27,4 +27,7 @@ add_executable(whac_a_rat
         Randomizer.cpp
         Randomizer.h
         Gun.cpp
-        Gun.h)
+        Gun.h
+        main.cpp
+        Controller.cpp
+        Controller.h)

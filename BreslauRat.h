@@ -4,7 +4,7 @@
 
 class BreslauRat : public Rat{
 public:
-    BreslauRat(RatType t, int h, int s, Randomizer & rand);
+    BreslauRat(Randomizer & rand);
     void attack(Player &player) override;
 };
 

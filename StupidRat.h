@@ -4,7 +4,7 @@
 
 class StupidRat : public Rat{
 public:
-    StupidRat(RatType t, int h, int s, Randomizer & rand);
+    StupidRat(Randomizer & rand);
     void attack(Player &player) override;
 };
 

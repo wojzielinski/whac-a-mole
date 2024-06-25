@@ -1,6 +1,6 @@
 #include "StupidRat.h"
 
-StupidRat::StupidRat(RatType t, int h, int s, Randomizer & rand) : Rat(t,h,s,rand){}
+StupidRat::StupidRat(Randomizer & rand) : Rat(STUPID,50,4,rand){}
 
 void StupidRat::attack(Player &player) {
     float dmg = RAND.get_rand_rat_dmg() * 10;

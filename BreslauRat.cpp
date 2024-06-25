@@ -1,6 +1,6 @@
 #include "BreslauRat.h"
 
-BreslauRat::BreslauRat(RatType t, int h, int s, Randomizer &rand) : Rat(t,h,s,rand){}
+BreslauRat::BreslauRat(Randomizer &rand) : Rat(BRESLAU,300,1,rand){}
 
 void BreslauRat::attack(Player &player) {
     float dmg = RAND.get_rand_rat_dmg() * 30;

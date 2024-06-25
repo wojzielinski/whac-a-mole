@@ -6,10 +6,14 @@ class Randomizer {
     std::mt19937 gen;
     std::uniform_real_distribution<float> weaponDist;
     std::uniform_real_distribution<float> ratDist;
+    std::uniform_real_distribution<float> ratAttackDist;
+    std::uniform_int_distribution<int> ratTypeDist;
 public:
     Randomizer();
     float get_rand_weapon_dmg();
     float get_rand_rat_dmg();
+    float get_rand_rat_attack();
+    int get_rand_rat_type();
 };
 
 

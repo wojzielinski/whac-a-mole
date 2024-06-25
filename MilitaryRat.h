@@ -4,7 +4,7 @@
 
 class MilitaryRat : public Rat{
 public:
-    MilitaryRat(RatType t, int h, int s, Randomizer & rand);
+    MilitaryRat(Randomizer & rand);
     void attack(Player &player) override;
 };
 

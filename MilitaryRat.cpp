@@ -1,6 +1,7 @@
 #include "MilitaryRat.h"
 
-MilitaryRat::MilitaryRat(RatType t, int h, int s, Randomizer &rand) : Rat(t,h,s,rand){}
+MilitaryRat::MilitaryRat(Randomizer &rand) : Rat(MILITARY,150,2,
+                                                               rand){}
 
 
 void MilitaryRat::attack(Player &player) {

@@ -4,8 +4,8 @@
 
 class BaseballBat : public Weapon{
 public:
-    BaseballBat(int baseDmg, const Randomizer & rand);
-    float get_damage(Rat *rat) override;
+    BaseballBat(int baseDmg, Randomizer & rand);
+    void attack(Rat &rat) override;
 };
 
 

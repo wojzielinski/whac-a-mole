@@ -1,6 +1,6 @@
 #include "NerdRat.h"
 
-NerdRat::NerdRat(RatType t, int h, int s, Randomizer &rand) : Rat(t,h,s,rand){}
+NerdRat::NerdRat(Randomizer &rand) : Rat(NERD,100,2,rand){}
 
 void NerdRat::attack(Player &player) {
     float dmg = RAND.get_rand_rat_dmg() * 15;

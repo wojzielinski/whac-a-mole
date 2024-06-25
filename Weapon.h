@@ -6,10 +6,10 @@
 class Weapon {
     const int baseDamage;
 protected:
-    const Randomizer & RAND;
+    Randomizer & RAND;
 public:
-    Weapon(int baseDmg, const Randomizer & rand);
-    virtual float get_damage(Rat * rat)=0;
+    Weapon(int baseDmg, Randomizer & rand);
+    virtual void attack(Rat & rat)=0;
     int get_baseDmg();
 };
 

@@ -1,11 +1,12 @@
 #include "Shoe.h"
 
-Shoe::Shoe(int baseDmg, const Randomizer & rand) : Weapon(baseDmg,rand){}
+Shoe::Shoe(int baseDmg, Randomizer & rand) : Weapon(baseDmg,rand){}
 
-float Shoe::get_damage(Rat *rat) {
-    RatType t = rat->get_type();
+void Shoe::attack(Rat &rat) {
+    RatType t = rat.get_type();
     if (t == STUPID || t == NERD){
-        return get_baseDmg()*2*RAND.get_rand_weapon_dmg();
+        rat.take_dmg(get_baseDmg()*2*RAND.get_rand_weapon_dmg());
+        return;
     }
-    return get_baseDmg()*0.5*RAND.get_rand_weapon_dmg();
+    rat.take_dmg(get_baseDmg()*0.5*RAND.get_rand_weapon_dmg());
 }

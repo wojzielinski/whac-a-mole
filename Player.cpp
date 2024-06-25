@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(float h, float s, Weapon &w) : weapon(w){
+Player::Player(float h, float s){
     hp = h;
     stamina = s;
 }
