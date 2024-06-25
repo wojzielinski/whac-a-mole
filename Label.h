@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Palette.h"
 
+// Class made for easier sfml text generating
 class Label {
     std::string str;
     sf::Font font;

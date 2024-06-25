@@ -2,6 +2,8 @@
 #define WHAC_A_RAT_PALETTE_H
 #include <SFML/Graphics.hpp>
 
+// Class for quicker colours choosing + colours palette management
+
 enum Color { BG, FG, ACC_D, ACC_L };
 class Palette {
     sf::Color bg;

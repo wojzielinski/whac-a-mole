@@ -6,25 +6,28 @@
 Manager::Manager(Controller &ctrl, Randomizer &rand, Player &player,
                  sf::RenderWindow & win, View & view, Leaderboard & lb) :
 CTRL(ctrl),RAND(rand),PLAYER(player),WINDOW(win),VIEW(view),LB(lb){
-    weapons[0] = new Shoe(10,RAND);
-    weapons[1] = new BaseballBat(15,RAND);
-    weapons[2] = new Gun(20,RAND);
+    weapons[0] = new Shoe(50,RAND);
+    weapons[1] = new BaseballBat(60,RAND);
+    weapons[2] = new Gun(75,RAND);
     currentWeapon = 0;
     state = MENU;
     shown = 0;
 }
 
+// Destruct weapons
 Manager::~Manager(){
     for(Weapon * w : weapons ){
         delete w;
     }
 }
 
+// Change game state
 void Manager::change_state(GameState s) {
     state = s;
     if(s == PLAYING) CTRL.restart();
 }
 
+// Called on startup / view switch
 void Manager::play() {
     while (WINDOW.isOpen()){
         if(state == MENU){
@@ -42,6 +45,7 @@ void Manager::play() {
     }
 }
 
+// Display menu, get user input
 void Manager::menu() {
     while(WINDOW.isOpen() && state == MENU){
         sf::Event event;
@@ -69,6 +73,7 @@ void Manager::menu() {
     }
 }
 
+// Display game view, get user input (keyboard and clicks)
 void Manager::playing() {
     while(WINDOW.isOpen() && state == PLAYING){
         sf::Event event;
@@ -87,6 +92,7 @@ void Manager::playing() {
     }
 }
 
+// Display game finished view, take username input (string), add result to leaderboard
 void Manager::finished() {
     sf::String usrInput;
     while(WINDOW.isOpen() && state == FINISHED){
@@ -114,6 +120,7 @@ void Manager::finished() {
     }
 }
 
+// Display leaderboard
 void Manager::leaderboard() {
     while(WINDOW.isOpen() && state == LEADERBOARD){
         sf::Event event;
@@ -130,6 +137,7 @@ void Manager::leaderboard() {
     }
 }
 
+// Update rats status - show and hide rats, shuffle their position every 10 rats shown
 void Manager::update_rats() {
     if (timer.getElapsedTime().asMilliseconds() >= (RAND.get_rand_timer())){
         Rat * r;
@@ -137,15 +145,17 @@ void Manager::update_rats() {
             r = CTRL.find_rat(RAND.get_rand_rat_pos());
         }while(r->is_attackable());
         r->show();
-        if(++shown == 14){
+        if(++shown == 10){
             CTRL.brute_hide();
             CTRL.shuff_rats();
+            shown = 0;
         }
         timer.restart();
     }
     CTRL.hide_rats();
 }
 
+// Key handler for switching weapons
 void Manager::keyHandler(sf::Keyboard::Key key) {
     if(key== sf::Keyboard::Num1)
         currentWeapon = 0;
@@ -155,6 +165,7 @@ void Manager::keyHandler(sf::Keyboard::Key key) {
         currentWeapon = 2;
 }
 
+// Mouse handler in game view
 void Manager::mouseHandler(sf::Event::MouseButtonEvent event) {
     if(event.button != sf::Mouse::Left) return;
     int isRat = VIEW.in_bounds(event.x, event.y);

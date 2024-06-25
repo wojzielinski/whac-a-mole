@@ -7,6 +7,7 @@ Label::Label(sf::RenderWindow & win): window(win) {
     size = 24;
     color = p.get_color(FG);
 }
+
 sf::Text Label::get_label(const std::string & string, float xpos, float ypos) {
     sf::Text text(string,font,size);
     text.setFillColor(color);

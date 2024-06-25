@@ -1,3 +1,15 @@
+# Ważne!
+
+Projekt jest w stanie ciągłego rozwoju. Zbyt późno się za niego wziąłem więc 
+nie wszystko co planowałem wprowadzić udało się zaimplementować. Gra nadal 
+jest uboga pod względem graficznym/dźwiękowym i wymaga optymalizacji mechanik gry 
+(ilość zadawanych obrażeń, prędkość etc.). Pracuje też nad rozbudowaniem systemu 
+wyjątków. Z czasem będę uzupełniał dokumentację kodu :)
+
+Grę na pewno będę jeszcze rozwijał, dlatego poniżej wklejam ostatni commit, który został dodany przed upływem terminu:
+
+
+
 # Whac-a-Rat
 
 *Gra dla prawdziwych szczurołapów*
@@ -16,6 +28,24 @@ Dodatkowym utrudnieniem jest różnorodność szczurów i broni. Każdy z kilku 
 Chybione uderzenie zabiera staminę - brak staminy oznacza przegraną. Niektóre szczury są agresywne i mogą losowo zaatakować gracza - gdy życie gracza spadnie do zera, gracz przegrywa.
 
 Gra będzie wyposażona w menu oraz tabelę najlepszych wyników. 
+
+#### Wybór broni, gatunki szczurów
+
+Dostępne są następujące bronie, które najlepiej działają na podane gatunki szczurów:
+
+- But (shoe): Stupid rat, Nerd rat
+- Kij bejsbolowy (baseball bat): Stupid rat, Breslau rat
+- Pistolet (gun): Military rat
+
+Szczury:
+
+|                                 Stupid                                 |                               Nerd                               |                                   Military                                   |                                  Breslau                                  |
+|:----------------------------------------------------------------------:|:----------------------------------------------------------------:|:----------------------------------------------------------------------------:|:-------------------------------------------------------------------------:|
+| ![Image showing a stupid rat](assets/textures/stupid.png "Stupid rat") | ![Image showing a nerd rat](assets/textures/nerd.png "Nerd rat") | ![Image showing a military rat](assets/textures/military.png "Military rat") | ![Image showing a breslau rat](assets/textures/breslau.png "Breslau rat") |
+
+#### Leaderboard
+
+Gra wyposażona jest w tabele 10. najlepszych wyników. Podczas rozwoju gry zdecydowałem się, żeby zapisywać wszystkie uzyskane wyniki, a wyświetlać tylko 10 najlepszych. Plik z wynikami nie zajmuje dużo miejsca, a gracz może sprawdzić jak polepszał (lub pogarszał!) się z czasem :)
 
 ### Fabuła
 

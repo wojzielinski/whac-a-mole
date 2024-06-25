@@ -1,6 +1,7 @@
 #include "Leaderboard.h"
 #include <iostream>
 #include <algorithm>
+// Taken from snake :)
 
 // Constructor - clear, read and sort leaderboard from file
 Leaderboard::Leaderboard(const std::string & filename) : FILE(filename)
@@ -29,7 +30,7 @@ void Leaderboard::read_leaderboard() {
     }
 }
 
-// Get n-th result (for given mode) as a string
+// Get n-th result as a string
 std::string Leaderboard::get_result(int n) {
     if(n >= count_results()) return "-/-";
     std::string resStr;
