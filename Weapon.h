@@ -9,6 +9,7 @@ protected:
     Randomizer & RAND;
 public:
     Weapon(int baseDmg, Randomizer & rand);
+    ~Weapon()=default;
     virtual void attack(Rat & rat)=0;
     int get_baseDmg();
 };

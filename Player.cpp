@@ -17,3 +17,7 @@ void Player::take_damage(float dmg) {
     if(hp > 0)
         hp -= dmg;
 }
+
+void Player::heal() {
+    hp = 100.0;
+}

@@ -8,31 +8,21 @@
 #include "Gun.h"
 #include "Player.h"
 #include "Randomizer.h"
+#include "Manager.h"
 
 #include <iostream>
 
 int main() {
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Whac-a-rat!",
+                            sf::Style::Close);
+
+    // Set window icon
+//    sf::Image icon;
+//    icon.loadFromFile("assets/readme/icon.png");
+//    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
     Randomizer rand;
     Player player(100, 100);
-    StupidRat stupidRat(rand);
-    BaseballBat baseballBat(10, rand);
-
-    baseballBat.attack(stupidRat);
-    std::cout << stupidRat.get_hp() << std::endl;
-    if(stupidRat.is_attackable())
-        std::cout << "true" << std::endl;
-    else
-        std::cout << "false" << std::endl;
-    stupidRat.toggle_isAttackable();
-    if(stupidRat.is_attackable())
-        std::cout << "true" << std::endl;
-    else
-        std::cout << "false" << std::endl;
     Controller ctrl(rand);
-    ctrl.push_rat();
-    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
-    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
-    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
-    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
-    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
+    Manager mngr(ctrl,rand,player,window);
 }

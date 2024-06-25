@@ -14,6 +14,7 @@ protected:
     Randomizer & RAND;
 public:
     Rat(RatType t, int h, int s, Randomizer & rand);
+    ~Rat()=default;
     RatType get_type() const;
     bool is_attackable() const;
     void toggle_isAttackable();

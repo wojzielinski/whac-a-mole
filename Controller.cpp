@@ -1,7 +1,11 @@
 #include "Controller.h"
 #include <algorithm>
 
-Controller::Controller(Randomizer &rand) : RAND(rand){}
+Controller::Controller(Randomizer &rand) : RAND(rand){
+    for (int i = 0; i < 6; ++i) {
+        push_rat();
+    }
+}
 
 bool Controller::rat_attack(Rat &rat) {
     RatType t = rat.get_type();
@@ -16,8 +20,9 @@ bool Controller::rat_attack(Rat &rat) {
 }
 
 void Controller::duel(Rat &rat, Player &player, Weapon &weapon) {
-    //if(!rat.is_attackable()) return;
+    if(!rat.is_attackable()) return;
     weapon.attack(rat);
+    rat.toggle_isAttackable();
     rat.debug_info();
     if (rat.get_hp() <= 0) {
         std::vector<Rat *>::iterator it = std::find_if(ratsVec.begin(), ratsVec.end(), [&](Rat *r) -> bool {
@@ -27,8 +32,9 @@ void Controller::duel(Rat &rat, Player &player, Weapon &weapon) {
         kill_rat(it);
         push_rat();
         std::shuffle(ratsVec.begin(), ratsVec.end(), RAND.get_eng());
+        player.heal();
     }
-    if(rat_attack(rat))
+    if(rat_attack(rat) && rat.get_hp() > 0)
         rat.attack(player);
 }
 
@@ -60,4 +66,8 @@ void Controller::kill_rat(std::vector<Rat *>::iterator it) {
 
 Rat * Controller::find_rat(int pos) {
     return ratsVec.at(pos);
+}
+
+void Controller::shuff_rats() {
+    std::shuffle(ratsVec.begin(), ratsVec.end(), RAND.get_eng());
 }

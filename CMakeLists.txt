@@ -2,8 +2,20 @@ cmake_minimum_required(VERSION 3.27)
 project(whac_a_rat)
 
 set(CMAKE_CXX_STANDARD 14)
+add_compile_options(-Wall -Wextra -pedantic -Werror=return-type -Werror=parentheses -Werror=vla -Werror=array-bounds -Wcast-qual -Wmaybe-uninitialized )
 
 include_directories(.)
+
+# SFML SETUP FOR WINDOWS
+IF (WIN32)
+    # Include local sfml cmake config
+    set(SFML_DIR "C:/SFML-2.6.1/lib/cmake/SFML")
+    # Link sfml statically (Optional)
+    set(SFML_STATIC_LIBRARIES TRUE)
+ENDIF()
+
+# SFML SETUP
+find_package(SFML 2 COMPONENTS graphics REQUIRED)
 
 add_executable(whac_a_rat
         Weapon.cpp
@@ -30,4 +42,8 @@ add_executable(whac_a_rat
         Gun.h
         main.cpp
         Controller.cpp
-        Controller.h)
+        Controller.h
+        Manager.cpp
+        Manager.h)
+
+target_link_libraries(whac_a_rat sfml-graphics)
