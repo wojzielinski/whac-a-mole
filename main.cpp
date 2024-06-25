@@ -13,15 +13,16 @@ int main() {
                             sf::Style::Close);
 
     // Set window icon
-//    sf::Image icon;
-//    icon.loadFromFile("assets/readme/icon.png");
-//    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+    sf::Image icon;
+    if(!icon.loadFromFile("assets/icon.png"))
+        throw std::exception();
+    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
     Randomizer rand;
     Player player(100, 100);
     Controller ctrl(rand);
     Leaderboard lb("results.txt");
-    View view(ctrl, window, lb);
+    View view(ctrl, window, lb,player);
     Manager mngr(ctrl,rand,player,window,view,lb);
 
     mngr.play();

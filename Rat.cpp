@@ -4,6 +4,7 @@
 Rat::Rat(RatType t, int h, int s, Randomizer & rand) : type(t),health(h),speed
 (s), RAND(rand) {
     isAttackable = false;
+    timeToHide = speed*500;
 }
 
 bool Rat::is_attackable() const {

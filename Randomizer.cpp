@@ -8,6 +8,7 @@ Randomizer::Randomizer() {
     ratAttackDist.param(std::uniform_real_distribution<float>::param_type {0,10});
     ratTypeDist.param(std::uniform_int_distribution<int>::param_type {0,9});
     ratPosDist.param(std::uniform_int_distribution<int>::param_type {0,5});
+    showTimerDist.param(std::uniform_int_distribution<int>::param_type {1500,3000});
 }
 
 float Randomizer::get_rand_weapon_dmg() {
@@ -28,6 +29,10 @@ int Randomizer::get_rand_rat_type() {
 
 int Randomizer::get_rand_rat_pos() {
     return ratPosDist(gen);
+}
+
+int Randomizer::get_rand_timer() {
+    return showTimerDist(gen);
 }
 
 std::mt19937 &Randomizer::get_eng() {

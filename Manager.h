@@ -15,6 +15,7 @@ class Manager {
     Player & PLAYER;
     sf::RenderWindow & WINDOW;
     View & VIEW;
+    Label label();
     Leaderboard & LB;
     Palette p;
     Weapon * weapons[3];    //std::vector maybe (?)
@@ -31,6 +32,7 @@ class Manager {
     void leaderboard();
     void change_state(GameState s);
     void keyHandler(sf::Keyboard::Key key);
+    void mouseHandler(sf::Event::MouseButtonEvent event);
 public:
     Manager(Controller & ctrl, Randomizer & rand, Player & player,
             sf::RenderWindow & win, View & view, Leaderboard & lb);

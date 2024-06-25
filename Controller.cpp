@@ -35,6 +35,8 @@ void Controller::duel(Rat &rat, Player &player, Weapon &weapon) {
     }
     if(rat_attack(rat) && rat.get_hp() > 0)
         rat.attack(player);
+    player.debug_info();
+    rat.debug_info();
 }
 
 void Controller::push_rat() {
@@ -97,5 +99,11 @@ int Controller::get_score() const {
 void Controller::hide_rats() {
     for(Rat * r : ratsVec){
         r->hide();
+    }
+}
+
+void Controller::brute_hide() {
+    for(Rat * r : ratsVec){
+        if(r->is_attackable()) r->toggle_isAttackable();
     }
 }

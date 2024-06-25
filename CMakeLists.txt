@@ -18,6 +18,12 @@ ENDIF()
 find_package(SFML 2 COMPONENTS graphics audio REQUIRED)
 
 configure_file(assets/fonts/VT323-Regular.ttf ${CMAKE_CURRENT_BINARY_DIR}/assets/fonts/VT323-Regular.ttf COPYONLY)
+configure_file(assets/icon.png ${CMAKE_CURRENT_BINARY_DIR}/assets/icon.png COPYONLY)
+configure_file(assets/textures/kanaliza.png ${CMAKE_CURRENT_BINARY_DIR}/assets/textures/kanaliza.png COPYONLY)
+configure_file(assets/textures/stupid.png ${CMAKE_CURRENT_BINARY_DIR}/assets/textures/stupid.png COPYONLY)
+configure_file(assets/textures/nerd.png ${CMAKE_CURRENT_BINARY_DIR}/assets/textures/nerd.png COPYONLY)
+configure_file(assets/textures/military.png ${CMAKE_CURRENT_BINARY_DIR}/assets/textures/military.png COPYONLY)
+configure_file(assets/textures/breslau.png ${CMAKE_CURRENT_BINARY_DIR}/assets/textures/breslau.png COPYONLY)
 
 add_executable(whac_a_rat
         Weapon.cpp
@@ -54,6 +60,7 @@ add_executable(whac_a_rat
         Palette.cpp
         Palette.h
         Label.cpp
-        Label.h)
+        Label.h
+)
 
 target_link_libraries(whac_a_rat sfml-graphics sfml-audio)

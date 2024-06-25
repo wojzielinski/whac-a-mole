@@ -25,6 +25,7 @@ public:
     int get_score() const;
     void shuff_rats();
     void hide_rats();
+    void brute_hide();
 };
 
 

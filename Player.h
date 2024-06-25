@@ -11,6 +11,8 @@ public:
     void take_damage(float dmg);
     void take_stamina();
     void heal();
+    void debug_info();
+    void restart();
 };
 
 

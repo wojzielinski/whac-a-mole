@@ -52,8 +52,12 @@ void Manager::menu() {
             if (event.type == sf::Event::KeyPressed){
                 if(event.key.code == sf::Keyboard::Q)
                     WINDOW.close();
-                if(event.key.code == sf::Keyboard::Num1)
+                if(event.key.code == sf::Keyboard::Num1) {
                     change_state(PLAYING);
+                    CTRL.restart();
+                    PLAYER.restart();
+                    timer.restart();
+                }
                 if(event.key.code == sf::Keyboard::Num2)
                     change_state(LEADERBOARD);
                 if(event.key.code == sf::Keyboard::Num3)
@@ -70,37 +74,33 @@ void Manager::playing() {
         sf::Event event;
         while (WINDOW.pollEvent(event))
         {
+            if (event.type == sf::Event::MouseButtonPressed)
+                mouseHandler(event.mouseButton);
             if (event.type == sf::Event::Closed)
                 WINDOW.close();
             if(event.type == sf::Event::KeyPressed)
                 keyHandler(event.key.code);
         }
-        WINDOW.clear(p.get_color(BG));
-        VIEW.draw_menu();
+        update_rats();
+        if(PLAYER.get_hp() <= 0 || PLAYER.get_stamina() <= 0) state = FINISHED;
+        VIEW.draw_playing(currentWeapon);
     }
-
 }
 
 void Manager::finished() {
-    sf::Font font;
-    font.loadFromFile("assets/fonts/VT323-Regular.ttf");
     sf::String usrInput;
-    sf::Text userName("Enter name: ", font, 50);
-    userName.setFillColor(p.get_color(FG));
-    userName.setPosition(50,275);
     while(WINDOW.isOpen() && state == FINISHED){
         sf::Event event;
         while (WINDOW.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 WINDOW.close();
-            if (event.type == sf::Event::TextEntered && usrInput.getSize()<24) {
+            if (event.type == sf::Event::TextEntered) {
                 if(event.text.unicode == 8 && !usrInput.isEmpty()){
                     usrInput.erase(usrInput.getSize()-1, 1);
-                }else {
+                }else if(usrInput.getSize()<24){
                     usrInput += event.text.unicode;
                 }
-                userName.setString("Enter name: " + usrInput);
             }
             if (event.type == sf::Event::KeyPressed) {
                 if(event.key.code == sf::Keyboard::Enter){
@@ -110,9 +110,7 @@ void Manager::finished() {
                 }
             }
         }
-        WINDOW.clear(p.get_color(ACC_D));
-        WINDOW.draw(userName);
-        WINDOW.display();
+        VIEW.draw_finished(usrInput);
     }
 }
 
@@ -133,15 +131,19 @@ void Manager::leaderboard() {
 }
 
 void Manager::update_rats() {
-    if (timer.getElapsedTime().asMilliseconds() <= (3050) &&
-        timer.getElapsedTime().asMilliseconds() >= (2950)){
+    if (timer.getElapsedTime().asMilliseconds() >= (RAND.get_rand_timer())){
         Rat * r;
         do {
             r = CTRL.find_rat(RAND.get_rand_rat_pos());
         }while(r->is_attackable());
         r->show();
-        CTRL.hide_rats();
+        if(++shown == 14){
+            CTRL.brute_hide();
+            CTRL.shuff_rats();
+        }
+        timer.restart();
     }
+    CTRL.hide_rats();
 }
 
 void Manager::keyHandler(sf::Keyboard::Key key) {
@@ -151,4 +153,32 @@ void Manager::keyHandler(sf::Keyboard::Key key) {
         currentWeapon = 1;
     if(key== sf::Keyboard::Num3)
         currentWeapon = 2;
+}
+
+void Manager::mouseHandler(sf::Event::MouseButtonEvent event) {
+    if(event.button != sf::Mouse::Left) return;
+    int isRat = VIEW.in_bounds(event.x, event.y);
+    switch (isRat) {
+        case 0:
+            CTRL.duel(* CTRL.find_rat(0),PLAYER, *weapons[currentWeapon]);
+            break;
+        case 1:
+            CTRL.duel(* CTRL.find_rat(1),PLAYER, *weapons[currentWeapon]);
+            break;
+        case 2:
+            CTRL.duel(* CTRL.find_rat(2),PLAYER, *weapons[currentWeapon]);
+            break;
+        case 3:
+            CTRL.duel(* CTRL.find_rat(3),PLAYER, *weapons[currentWeapon]);
+            break;
+        case 4:
+            CTRL.duel(* CTRL.find_rat(4),PLAYER, *weapons[currentWeapon]);
+            break;
+        case 5:
+            CTRL.duel(* CTRL.find_rat(5),PLAYER, *weapons[currentWeapon]);
+            break;
+        default:
+            PLAYER.take_stamina();
+            break;
+    }
 }
