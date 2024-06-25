@@ -14,6 +14,7 @@ public:
     float get_rand_rat_dmg();
     float get_rand_rat_attack();
     int get_rand_rat_type();
+    std::mt19937 & get_eng();
 };
 
 

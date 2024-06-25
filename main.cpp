@@ -15,7 +15,7 @@ int main() {
     Randomizer rand;
     Player player(100, 100);
     StupidRat stupidRat(rand);
-    BaseballBat baseballBat(20, rand);
+    BaseballBat baseballBat(10, rand);
 
     baseballBat.attack(stupidRat);
     std::cout << stupidRat.get_hp() << std::endl;
@@ -30,5 +30,9 @@ int main() {
         std::cout << "false" << std::endl;
     Controller ctrl(rand);
     ctrl.push_rat();
-    ctrl.duel()
+    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
+    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
+    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
+    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
+    ctrl.duel(*(ctrl.find_rat(0)), player, baseballBat);
 }

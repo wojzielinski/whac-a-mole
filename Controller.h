@@ -19,7 +19,7 @@ public:
     void kill_rat(std::vector<Rat*>::iterator it);
     Controller(Randomizer & rand);
     void duel(Rat & rat, Player & player, Weapon & weapon);
-
+    Rat * find_rat(int pos);
 };
 
 

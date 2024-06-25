@@ -24,3 +24,7 @@ float Randomizer::get_rand_rat_attack() {
 int Randomizer::get_rand_rat_type() {
     return ratTypeDist(gen);
 }
+
+std::mt19937 &Randomizer::get_eng() {
+    return gen;
+}

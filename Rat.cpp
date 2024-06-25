@@ -1,4 +1,5 @@
 #include "Rat.h"
+#include <iostream>
 
 Rat::Rat(RatType t, int h, int s, Randomizer & rand) : type(t),health(h),speed
 (s), RAND(rand) {
@@ -28,4 +29,9 @@ int Rat::get_hp() const {
 
 int Rat::get_speed() const {
     return speed;
+}
+
+void Rat::debug_info() {
+    std::cout << "Type: " << type << std::endl;
+    std::cout << "Health: " << health << std::endl;
 }

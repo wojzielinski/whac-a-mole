@@ -21,6 +21,7 @@ public:
     virtual void attack(Player & player)=0;
     int get_hp() const;
     int get_speed() const;
+    void debug_info();
 };
 
 #endif //WHAC_A_RAT_RAT_H

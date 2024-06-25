@@ -16,14 +16,17 @@ bool Controller::rat_attack(Rat &rat) {
 }
 
 void Controller::duel(Rat &rat, Player &player, Weapon &weapon) {
-    if(!rat.is_attackable()) return;
+    //if(!rat.is_attackable()) return;
     weapon.attack(rat);
+    rat.debug_info();
     if (rat.get_hp() <= 0) {
         std::vector<Rat *>::iterator it = std::find_if(ratsVec.begin(), ratsVec.end(), [&](Rat *r) -> bool {
             return r == &rat;
         });
         if (it == ratsVec.end()) throw std::exception();
         kill_rat(it);
+        push_rat();
+        std::shuffle(ratsVec.begin(), ratsVec.end(), RAND.get_eng());
     }
     if(rat_attack(rat))
         rat.attack(player);
@@ -32,25 +35,29 @@ void Controller::duel(Rat &rat, Player &player, Weapon &weapon) {
 void Controller::push_rat() {
     int random = RAND.get_rand_rat_type();
     if(random < 4){
-        StupidRat r(RAND);
-        ratsVec.push_back(&r);
+        Rat * r = new StupidRat(RAND);
+        ratsVec.push_back(r);
         return;
     }
     if(random < 7){
-        NerdRat r(RAND);
-        ratsVec.push_back(&r);
+        Rat * r = new NerdRat(RAND);
+        ratsVec.push_back(r);
         return;
     }
     if(random < 9){
-        MilitaryRat r(RAND);
-        ratsVec.push_back(&r);
+        Rat * r = new MilitaryRat(RAND);
+        ratsVec.push_back(r);
         return;
     }
-    StupidRat r(RAND);
-    ratsVec.push_back(&r);
+    Rat * r = new BreslauRat(RAND);
+    ratsVec.push_back(r);
 }
 
 void Controller::kill_rat(std::vector<Rat *>::iterator it) {
     delete *it;
     ratsVec.erase(it);
+}
+
+Rat * Controller::find_rat(int pos) {
+    return ratsVec.at(pos);
 }
