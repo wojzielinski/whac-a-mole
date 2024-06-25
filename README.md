@@ -8,7 +8,7 @@ wyjątków. Z czasem będę uzupełniał dokumentację kodu :)
 
 Grę na pewno będę jeszcze rozwijał, dlatego poniżej wklejam ostatni commit, który został dodany przed upływem terminu:
 
-
+Commit #7833c5a4
 
 # Whac-a-Rat
 
