@@ -47,6 +47,8 @@ Szczury:
 
 Gra wyposażona jest w tabele 10. najlepszych wyników. Podczas rozwoju gry zdecydowałem się, żeby zapisywać wszystkie uzyskane wyniki, a wyświetlać tylko 10 najlepszych. Plik z wynikami nie zajmuje dużo miejsca, a gracz może sprawdzić jak polepszał (lub pogarszał!) się z czasem :)
 
+Aby wyjść z leaderboard'a wystarczy nacisnąć klawisz "Q".
+
 ### Fabuła
 
 Po latach spokoju od ostatniej powodzi Wrocław znów stanął w obliczu narastających problemów. Jak podaje prezes *Wrocławskiego Zakładu Kanalizacyjnego*, pan Szczurosław Kanalia, szczury mnożące się na potęgę w miejskich kanałach stanowią zagrożenie dla całej cywilizacji Wrocławian. 

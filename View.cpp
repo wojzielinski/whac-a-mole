@@ -49,10 +49,12 @@ void View::draw_finished(const std::string & usr){
 // Draw leaderboard
 void View::draw_leaderboard(){
     WIN.clear(palette.get_color(ACC_D));
-    WIN.draw(label.get_label("Leaderboard",120,palette.get_color(BG),0.5,0.07));
+    WIN.draw(label.get_label("Leaderboard",120,palette.get_color(BG),0.5,0.05));
     for (int it = 0; it < 10; ++it) {
-        WIN.draw(label.get_label(LB.get_result(it),50,0.5,0.25+0.07*it));
+        WIN.draw(label.get_label(LB.get_result(it),50,0.5,0.22+0.07*it));
     }
+    WIN.draw(label.get_label("Press Q to return to menu",50,palette.get_color
+    (BG),0.5,0.93));
     WIN.display();
 };
 
