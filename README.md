@@ -1,15 +1,3 @@
-# Ważne!
-
-Projekt jest w stanie ciągłego rozwoju. Zbyt późno się za niego wziąłem więc 
-nie wszystko co planowałem wprowadzić udało się zaimplementować. Gra nadal 
-jest uboga pod względem graficznym/dźwiękowym i wymaga optymalizacji mechanik gry 
-(ilość zadawanych obrażeń, prędkość etc.). Pracuje też nad rozbudowaniem systemu 
-wyjątków. Z czasem będę uzupełniał dokumentację kodu :)
-
-Grę na pewno będę jeszcze rozwijał, dlatego poniżej wklejam ostatni commit, który został dodany przed upływem terminu:
-
-Commit #7833c5a4
-
 # Whac-a-Rat
 
 *Gra dla prawdziwych szczurołapów*
